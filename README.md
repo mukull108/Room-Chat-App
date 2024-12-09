@@ -25,6 +25,13 @@ This is a real-time chat application built using **React** for the frontend and 
 - **Spring Data JPA**: For interacting with the MongoDB database.
 - **No Spring Security**: No authentication or authorization is used in this project.
 
+- ## Real-Time Messaging
+
+This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to enable real-time messaging between users in chat rooms.
+
+- **SockJS** is a JavaScript library that provides WebSocket-like communication, even when WebSocket is not available. It ensures that the client can connect to the server in case WebSocket is not supported by the browser.
+- **STOMP** (Simple Text Oriente
+
 ## Setup
 
 ### Prerequisites
@@ -78,9 +85,4 @@ This is a real-time chat application built using **React** for the frontend and 
 - **GET** `/api/v1/rooms/{roomId}/messages`: Get messages of a room with pagination.
 - **WebSocket Endpoint**: `/chat`: For real-time message exchange using STOMP.
 
-## Real-Time Messaging
-
-This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to enable real-time messaging between users in chat rooms.
-
-- **SockJS** is a JavaScript library that provides WebSocket-like communication, even when WebSocket is not available. It ensures that the client can connect to the server in case WebSocket is not supported by the browser.
-- **STOMP** (Simple Text Oriented Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
+d Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
