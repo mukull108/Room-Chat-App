@@ -84,7 +84,3 @@ This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to 
 
 - **SockJS** is a JavaScript library that provides WebSocket-like communication, even when WebSocket is not available. It ensures that the client can connect to the server in case WebSocket is not supported by the browser.
 - **STOMP** (Simple Text Oriented Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
-
-## License
-
-This project is licensed under the MIT License.
