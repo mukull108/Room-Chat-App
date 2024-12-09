@@ -32,6 +32,21 @@ This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to 
 - **SockJS** is a JavaScript library that provides WebSocket-like communication, even when WebSocket is not available. It ensures that the client can connect to the server in case WebSocket is not supported by the browser.
 - **STOMP** (Simple Text Oriente
 
+### Testing the Application
+1. Open the frontend application at `http://localhost:5173`.
+2. Create a room or join an existing one by entering a room ID and your username.
+3. Start sending messages in real-time.
+
+## API Endpoints
+
+- **POST** `/api/v1/rooms`: Create a new room.
+- **GET** `/api/v1/rooms/{roomId}`: Join an existing room.
+- **GET** `/api/v1/rooms/{roomId}/messages`: Get messages of a room with pagination.
+- **WebSocket Endpoint**: `/chat`: For real-time message exchange using STOMP.
+
+d Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
+
+
 ## Setup
 
 ### Prerequisites
@@ -72,17 +87,3 @@ This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to 
     ```bash
     mvn spring-boot:run
     ```
-
-### Testing the Application
-1. Open the frontend application at `http://localhost:5173`.
-2. Create a room or join an existing one by entering a room ID and your username.
-3. Start sending messages in real-time.
-
-## API Endpoints
-
-- **POST** `/api/v1/rooms`: Create a new room.
-- **GET** `/api/v1/rooms/{roomId}`: Join an existing room.
-- **GET** `/api/v1/rooms/{roomId}/messages`: Get messages of a room with pagination.
-- **WebSocket Endpoint**: `/chat`: For real-time message exchange using STOMP.
-
-d Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
