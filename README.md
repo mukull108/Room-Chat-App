@@ -1,53 +1,90 @@
-# Chat Application - Real-time Messaging App
+# Real-Time Chat Application
 
-This is a real-time chat application built using **React** for the frontend and **Spring Boot** for the backend. It allows users to join and create chat rooms and send/receive messages in real-time. The app uses **WebSockets** and **STOMP** for real-time communication and **MongoDB** for message storage.
+This is a real-time chat application built using **React** for the frontend and **Spring Boot** for the backend. The app allows users to join or create chat rooms, send and receive messages, and view real-time updates.
 
----
+## Features
 
-## **Features**
+- **Room Creation & Joining**: Users can create a new chat room or join an existing one using a unique room ID.
+- **Real-Time Messaging**: Utilizes WebSockets (with SockJS and STOMP) to provide real-time communication between users in a room.
+- **Message Persistence**: Messages are stored in a MongoDB database, ensuring they persist even after the server is restarted.
+- **Responsive UI**: Built with React, providing a smooth and interactive user experience.
 
-- **Real-time Messaging**: Send and receive messages instantly in the chat room using WebSocket and STOMP.
-- **Join/Create Rooms**: Users can join existing rooms or create new ones.
-- **User Authentication**: Basic authentication using username for chat rooms.
-- **Message History**: Messages are saved in MongoDB and can be retrieved even after reconnecting.
-- **Responsive UI**: The app is fully responsive and works on both mobile and desktop devices.
+## Technologies Used
 
----
+### Frontend:
+- **React**: For building the user interface.
+- **Vite**: A build tool for faster development.
+- **Socket.IO & STOMP**: For real-time communication between the client and server.
+- **Axios**: For making API requests to the backend.
+- **Toast Notifications**: For providing user feedback.
 
-## **Technologies Used**
+### Backend:
+- **Spring Boot**: For creating the REST API and WebSocket server.
+- **WebSockets (SockJS + STOMP)**: For handling real-time messaging between the client and server.
+- **MongoDB**: For storing messages and room data.
+- **Spring Data JPA**: For interacting with the MongoDB database.
+- **No Spring Security**: No authentication or authorization is used in this project.
 
-- **Frontend**:
-  - **React**: JavaScript library for building the user interface.
-  - **React Router**: For handling routing in the application.
-  - **React Context API**: For state management (user and room details).
-  - **SockJS**: For WebSocket fallback to support real-time communication across different browsers.
-  - **STOMP**: Protocol used for messaging communication over WebSockets.
-  - **Axios**: For making API requests to the backend.
-  - **React-Hot-Toast**: For showing real-time notifications to users.
+## Setup
 
-- **Backend**:
-  - **Spring Boot**: For creating REST APIs and handling WebSocket connections.
-  - **Spring WebSocket**: For real-time messaging with STOMP over WebSockets.
-  - **MongoDB**: NoSQL database for storing messages and room data.
-  - **Spring Data JPA**: For persisting entities to MongoDB.
+### Prerequisites
+- **Node.js** and **npm** (for the frontend)
+- **Java** and **Maven** (for the backend)
+- **MongoDB** (local or cloud instance)
 
-- **Development Tools**:
-  - **Docker**: For containerizing the application and making it easily deployable.
-  - **AWS**: For deploying the application to the cloud.
-  - **Git**: For version control.
+### Frontend Setup
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/chat-app.git
+    cd chat-app
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
----
+### Backend Setup
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/chat-app.git
+    cd chat-app
+    ```
+2. Configure your `application.properties` file to connect to MongoDB:
+    ```properties
+    spring.data.mongodb.uri=mongodb://localhost:27017/chatdb
+    ```
+3. Build the backend using Maven:
+    ```bash
+    mvn clean install
+    ```
+4. Run the Spring Boot application:
+    ```bash
+    mvn spring-boot:run
+    ```
 
-## **Installation**
+### Testing the Application
+1. Open the frontend application at `http://localhost:5173`.
+2. Create a room or join an existing one by entering a room ID and your username.
+3. Start sending messages in real-time.
 
-### **Prerequisites**
+## API Endpoints
 
-1. **Java 11 or later**
-2. **Maven** (For building the Spring Boot backend)
-3. **Node.js** and **npm** (For running the React frontend)
+- **POST** `/api/v1/rooms`: Create a new room.
+- **GET** `/api/v1/rooms/{roomId}`: Join an existing room.
+- **GET** `/api/v1/rooms/{roomId}/messages`: Get messages of a room with pagination.
+- **WebSocket Endpoint**: `/chat`: For real-time message exchange using STOMP.
 
-### **Clone the repository**
+## Real-Time Messaging
 
-```bash
-git clone https://github.com/yourusername/chat-app.git
-cd chat-app
+This application uses **WebSockets**, specifically **SockJS** and **STOMP**, to enable real-time messaging between users in chat rooms.
+
+- **SockJS** is a JavaScript library that provides WebSocket-like communication, even when WebSocket is not available. It ensures that the client can connect to the server in case WebSocket is not supported by the browser.
+- **STOMP** (Simple Text Oriented Messaging Protocol) is used as the messaging protocol over WebSockets. It simplifies the process of sending and receiving messages in a structured format.
+
+## License
+
+This project is licensed under the MIT License.
